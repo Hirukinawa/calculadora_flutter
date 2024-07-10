@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'assets/styles/styles.dart';
 
 class Calculadora extends StatefulWidget {
   const Calculadora({super.key});
@@ -9,22 +10,6 @@ class Calculadora extends StatefulWidget {
 
 class _CalculadoraState extends State<Calculadora> {
   String numeroTela = "0";
-
-  void atualizaNumero(String digito) {
-    setState(() {
-      numeroTela = numeroTela == "0"
-          ? digito
-          : ((int.parse(numeroTela) * 10) + int.parse(digito)).toString();
-    });
-  }
-
-  void excluiNumero() {
-    setState(() {
-      numeroTela = numeroTela == "0"
-          ? "0"
-          : (double.parse(numeroTela) / 10).toInt().toString();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +43,9 @@ class _CalculadoraState extends State<Calculadora> {
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.80,
+                height: MediaQuery.of(context).size.height * 0.50,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     FractionallySizedBox(
                       widthFactor: 1,
@@ -67,57 +53,43 @@ class _CalculadoraState extends State<Calculadora> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
                               atualizaNumero("7");
                             },
                             child: const Text(
                               "7",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
                               atualizaNumero("8");
                             },
                             child: const Text(
                               "8",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
                               atualizaNumero("9");
                             },
                             child: const Text(
                               "9",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.all(20),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              excluiNumero();
+                              adicao();
                             },
                             child: const Text(
-                              "<-",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "+",
+                              style: Styles.buttonText,
                             ),
                           )
                         ],
@@ -129,57 +101,43 @@ class _CalculadoraState extends State<Calculadora> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              atualizaNumero("7");
+                              atualizaNumero("4");
                             },
                             child: const Text(
-                              "7",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "4",
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              atualizaNumero("8");
+                              atualizaNumero("5");
                             },
                             child: const Text(
-                              "8",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "5",
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              atualizaNumero("9");
+                              atualizaNumero("6");
                             },
                             child: const Text(
-                              "9",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "6",
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.all(20),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              excluiNumero();
+                              subtracao();
                             },
                             child: const Text(
-                              "<-",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "-",
+                              style: Styles.buttonText,
                             ),
                           )
                         ],
@@ -191,57 +149,43 @@ class _CalculadoraState extends State<Calculadora> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              atualizaNumero("7");
+                              atualizaNumero("1");
                             },
                             child: const Text(
-                              "7",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "1",
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              atualizaNumero("8");
+                              atualizaNumero("2");
                             },
                             child: const Text(
-                              "8",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "2",
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              atualizaNumero("9");
+                              atualizaNumero("3");
                             },
                             child: const Text(
-                              "9",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "3",
+                              style: Styles.buttonText,
                             ),
                           ),
                           ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.all(20),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
+                            style: Styles.buttonStyle,
                             onPressed: () {
-                              excluiNumero();
+                              multiplicacao();
                             },
                             child: const Text(
-                              "<-",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
+                              "X",
+                              style: Styles.buttonText,
                             ),
                           )
                         ],
@@ -253,53 +197,49 @@ class _CalculadoraState extends State<Calculadora> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ElevatedButton(
-                            onPressed: () {
-                              atualizaNumero("7");
-                            },
-                            child: const Text(
-                              "7",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              atualizaNumero("8");
-                            },
-                            child: const Text(
-                              "8",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              atualizaNumero("9");
-                            },
-                            child: const Text(
-                              "9",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
+                            /* style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF186A11),
                               padding: const EdgeInsets.all(20),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                            ),
+                            ), */
+                            style: Styles.buttonEquals,
                             onPressed: () {
-                              excluiNumero();
+                              fazerCalculo();
                             },
                             child: const Text(
-                              "<-",
+                              "=",
+                              style: Styles.buttonEqualsText,
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: Styles.buttonStyle,
+                            onPressed: () {
+                              atualizaNumero("0");
+                            },
+                            child: const Text(
+                              "0",
+                              style: Styles.buttonText,
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: Styles.buttonStyle,
+                            onPressed: () {
+                              botaVirgula();
+                            },
+                            child: const Text(
+                              ",",
+                              style: Styles.buttonText,
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: Styles.buttonStyle,
+                            onPressed: () {
+                              divisao();
+                            },
+                            child: const Text(
+                              "/",
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 20,
@@ -317,20 +257,31 @@ class _CalculadoraState extends State<Calculadora> {
     );
   }
 
-  Widget buildButtonRow(List<String> valores) {
-    return FractionallySizedBox(
-      widthFactor: 1,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: valores.map((valor) {
-          return ElevatedButton(
-            onPressed: () {
-              setState(() {});
-            },
-            child: Text(valor),
-          );
-        }).toList(),
-      ),
-    );
+  void atualizaNumero(String digito) {
+    setState(() {
+      numeroTela = numeroTela == "0"
+          ? digito
+          : ((int.parse(numeroTela) * 10) + int.parse(digito)).toString();
+    });
   }
+
+  void excluiNumero() {
+    setState(() {
+      numeroTela = numeroTela == "0"
+          ? "0"
+          : (double.parse(numeroTela) / 10).toInt().toString();
+    });
+  }
+
+  void adicao() {}
+
+  void subtracao() {}
+
+  void multiplicacao() {}
+
+  void divisao() {}
+
+  void fazerCalculo() {}
+
+  void botaVirgula() {}
 }
