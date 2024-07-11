@@ -39,14 +39,51 @@ class _CalculadoraState extends State<Calculadora> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
+                height: MediaQuery.of(context).size.height * 0.1,
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.50,
+                //height: MediaQuery.of(context).size.height * 0.50,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              style: Styles.buttonEquals,
+                              onPressed: () {
+                                excluiTudo();
+                              },
+                              child: const Text(
+                                'C',
+                                style: Styles.buttonEqualsText,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: ElevatedButton(
+                              style: Styles.buttonEquals,
+                              onPressed: () {
+                                excluiNumero();
+                              },
+                              child: const Text(
+                                '<-',
+                                style: Styles.buttonEqualsText,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
                     FractionallySizedBox(
                       widthFactor: 1,
                       child: Row(
@@ -94,6 +131,9 @@ class _CalculadoraState extends State<Calculadora> {
                           )
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     FractionallySizedBox(
                       widthFactor: 1,
@@ -143,6 +183,9 @@ class _CalculadoraState extends State<Calculadora> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
                     FractionallySizedBox(
                       widthFactor: 1,
                       child: Row(
@@ -191,19 +234,15 @@ class _CalculadoraState extends State<Calculadora> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
                     FractionallySizedBox(
                       widthFactor: 1,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ElevatedButton(
-                            /* style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF186A11),
-                              padding: const EdgeInsets.all(20),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ), */
                             style: Styles.buttonEquals,
                             onPressed: () {
                               fazerCalculo();
@@ -270,6 +309,12 @@ class _CalculadoraState extends State<Calculadora> {
       numeroTela = numeroTela == "0"
           ? "0"
           : (double.parse(numeroTela) / 10).toInt().toString();
+    });
+  }
+
+  void excluiTudo() {
+    setState(() {
+      numeroTela = "0";
     });
   }
 
